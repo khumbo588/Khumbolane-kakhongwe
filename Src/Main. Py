@@ -1,0 +1,49 @@
+class BusinessAutomationSystem:
+    def __init__(self):
+        self.customers = []
+        self.bookings = []
+
+    def add_customer(self, name, phone):
+        customer = {
+            "name": name,
+            "phone": phone
+        }
+        self.customers.append(customer)
+        return customer
+
+    def create_booking(self, customer_name, service, date):
+        booking = {
+            "customer": customer_name,
+            "service": service,
+            "date": date,
+            "status": "Pending"
+        }
+        self.bookings.append(booking)
+        return booking
+
+    def show_bookings(self):
+        if not self.bookings:
+            print("No bookings available.")
+            return
+
+        for booking in self.bookings:
+            print(
+                f"{booking['customer']} | "
+                f"{booking['service']} | "
+                f"{booking['date']} | "
+                f"{booking['status']}"
+            )
+
+
+if __name__ == "__main__":
+    system = BusinessAutomationSystem()
+
+    system.add_customer("John Banda", "+265991234567")
+
+    system.create_booking(
+        "John Banda",
+        "Business Consultation",
+        "2026-10-05"
+    )
+
+    system.show_bookings()
